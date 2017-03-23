@@ -1,0 +1,134 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #eee;
+}
+
+#mapa {
+	height: 500px;
+	width: 35%;
+	position: fixed;
+}
+
+#contenido	{
+	width: 65%;
+	position: absolute;
+	margin-left: 35%;
+}
+
+#barraSuperior {
+	height: 60px;
+	background-color: #2A2C2B;
+	/*background-color: #cccccc;*/
+	position: absolute;
+	top: 0px;
+	width: 100%;
+}
+
+#barraSuperior img {
+	height: 40px;
+	float: right;
+	margin-right: 40px;
+	margin-top: 10px;
+}
+
+#graficas {
+	background-color: #e2e2e2;
+	height: 100%; 
+    min-height: 100%; 
+    position: absolute; 
+    top: 60px; 
+    right: 0;
+    left: 0; 
+    bottom: 0;
+}
+
+.estilosGraficas {
+	padding: 5% 10px;
+	margin: 0;
+	width: auto;
+}
+
+.estiloTartas{
+	display:  inline-block;
+	width: 40%;
+	margin: 4%;
+	max-width: 40%;
+}
+
+.ui-tabs {
+	background-color: #2A2C2B;
+}
+
+#tabs {
+	padding: 0px;
+	border: 0px;
+}
+
+#imagen-carga{
+	width: 30%;
+	margin-top: 200px;
+	margin-left: 20px;
+}
+
+#texto-carga{
+	position: absolute;
+	color: white;
+	margin: 200px 30px 0px 60%;
+	font-size: 20px;
+	text-align: right;
+}
+
+#texto-titulo{
+	position: absolute;
+	color: white;
+	margin: 15px 0px 0px 20px;
+	font-size: 20px;
+	text-align: left;
+	font-family: 'Oswald', sans-serif;
+}
+
+#autores{
+	margin: 0 auto;
+	width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.autor{
+	width: 200px;
+	padding: 20px 10px 10px 10px;
+	margin: 0 auto;
+    display: inline-block;
+    text-align: center;
+}
+.autor img{
+	width: 100px;
+	border-radius: 100%;
+	border: 2px solid #ccc;
+	text-align: center;
+}
+.autor:hover img{
+	border: 2px solid #505050;
+}
+.autor i{
+	padding: 0 2px;
+}
+
+.logoAutor{
+	padding-top: 50px;
+	width: 250px;
+	text-align: center;
+}
+
+#tabs-4 p{
+	margin-left: 30px;
+	color: #000000;
+}
+
+#progressbar2 .ui-progressbar-value {
+    background-color: rgba(54, 162, 235,0.8);
+}
+#progressbar1 .ui-progressbar-value {
+    background-color: #2A2C2B;
+}

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>MapReducers</title>
+	<meta name="description" content="MapReducers">
+	<meta name="author" content="Ares Perez Avila">
+	<link rel="stylesheet" href="css/main.css"> <!--Estilos principales-->
+	<link rel="stylesheet" href="css/leaflet.css"> <!--Estilos de Leaflet-->
+	<link rel="stylesheet" href="jqueryui/jquery-ui.min.css"> <!--Estilos de jQuery ui-->
+	<link rel="stylesheet" href="jqueryui/jquery-ui.structure.min.css"> <!--Estilos de jQuery ui-->
+	<link rel="stylesheet" href="jqueryui/jquery-ui.theme.min.css"> <!--Estilo de pestañas de jQuery-->
+	<script src="js/jquery.js"></script> <!--jQuery-->
+	<script src="jqueryui/jquery-ui.min.js"></script> <!--jQuery ui-->
+	<link rel="stylesheet" href="css/normalize.css"> <!--Estilos de pantalla de carga-->
+	<link rel="stylesheet" href="css/timer.css"> <!--Estilos de pantalla de carga-->
+	<link rel="stylesheet" href="css/font-awesome.min.css"> <!--Iconos de FontAwesome-->
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> <!--Fuente del título-->
+	<script src="js/timer.js"></script> <!--Pantalla de carga-->
+</head>
+<body>
+<div id="demo-content">
+
+	<!-- Pantalla de carga -->
+	<div id="loader-wrapper">
+		<div id="loader"></div>
+		<div class="loader-section section-left"><div id="texto-carga">Sistema inteligente de gestión de oficinas</div></div>
+        <div class="loader-section section-right"><img src="img/logo.png" id="imagen-carga"></div>
+	</div>
+
+	<!-- Contenido -->
+	<div id="content">
+		<div id="mapa"></div> <!--Leaflet-->
+	<div id="contenido">
+		<div id="barraSuperior"><div id="texto-titulo">Sistema inteligente de gestión de oficinas</div><img src="img/logo.png"></div> 
+		<div id="graficas">
+			<!-- Pestañas -->
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Estratégias</a></li>
+					<li><a href="#tabs-2">Análisis de gasto</a></li>
+					<li><a href="#tabs-3">Análisis de transacciones</a></li>
+					<li><a href="#tabs-4">Datos integrados</a></li>
+					<li><a href="#tabs-5">Autores</a></li>
+				</ul>
+				<div id="tabs-1">
+					<p> <i class="fa fa-info-circle" aria-hidden="true"></i> Este módulo muestra una recomendación sobre la necesidad de abrir o cerrar oficinas en cada código postal en base a datos de consumo y número de oficinas.
+					<br>- Pase el ratón por un código postal para ver la estrategia disponible, el gasto, las transacciones, las oficinas y paro.
+					<br>- Desplace el slider para variar la intensidad de la recomendación.
+					</p><br>
+					<div id="slider"></div>
+					<h4>Código Postal: <valor id="cpActual">No seleccionado</valor></h4><valor id="nombreCp"></valor>
+					<center><h2>Recomendación: <valor id="valor4">-</valor></h2></center>
+					<hr>
+					<center><h4>Paro Total: <valor id="valor5">0</valor> personas | <font color="#36a2eb">Hombres</font>: <valor id="valor6">0</valor> | <font color="#ff51dc">Mujeres</font>: <valor id="valor7">0</valor></h4></center>
+					<div id="progressbar2"></div>
+					<h3>Número de transacciones: <valor id="valor1">0</valor>.</h3>
+					<h3>Importe gastado: <valor id="valor2">0</valor> euros.</h3>
+					<h3>Número de oficinas: <valor id="valor3">0</valor>.</h3>
+					<div id="progressbar1"></div>
+				</div>
+				<div id="tabs-2">
+					<p> <i class="fa fa-info-circle" aria-hidden="true"></i> Representación del gasto total por sector en días de la semana y franjas horarias.<br> Haga click sobre las leyendas para activar o desactivar sectores.</p><hr><br>
+					<canvas id="graficoUno" class="estilosGraficas"></canvas>
+					<canvas id="graficoTres" class="estilosGraficas"></canvas>
+				</div>
+				<div id="tabs-3">
+					<p> <i class="fa fa-info-circle" aria-hidden="true"></i> Representación del número de transacciones por sector. Pase el cursor para ver datos específicos.<br> Haga click sobre las leyendas para activar o desactivar días.</p><hr><br>
+					<canvas id="graficoCuatro" class="estilosGraficas"></canvas>
+					<div class="estiloTartas"><canvas id="tarta1"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta2"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta3"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta4"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta5"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta6"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta7"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta8"></canvas></div>
+					<div class="estiloTartas"><canvas id="tarta9"></canvas></div>
+				</div>
+				<div id="tabs-4">
+					<p> <i class="fa fa-info-circle" aria-hidden="true"></i> Para la elaboración de la herramienta se han utilizado las siguientes fuentes de información<hr><br>
+					<p><i class="fa fa-hand-o-right" aria-hidden="true"></i>  Paro por código postal | SEPE <a href="https://sede.sepe.gob.es"><i class="fa fa-globe" aria-hidden="true"></i></a></p>
+					<p><i class="fa fa-hand-o-right" aria-hidden="true"></i>  Oficinas del grupo <a href="https://www.grupocooperativocajamar.es/es/comun/busquedas/?b_entidad=3058&b_tipo=oficinas"><i class="fa fa-globe" aria-hidden="true"></i></a></p>
+					<p><i class="fa fa-hand-o-right" aria-hidden="true"></i>  Información de códigos postales <a href="http://www.solosequenosenada.com/2010/09/16/listado-de-todos-los-codigos-postales-de-espana"><i class="fa fa-globe" aria-hidden="true"></i></a></p>
+					<p><i class="fa fa-hand-o-right" aria-hidden="true"></i>  Archivos de forma de códigos postales | CNIG <a href="http://centrodedescargas.cnig.es/CentroDescargas/busquedaSerie.do?codSerie=02122"><i class="fa fa-globe" aria-hidden="true"></i></a></p>				
+				</div>
+				<div id="tabs-5">
+					<div id="autores">
+					<p> <i class="fa fa-users" aria-hidden="true"></i> El equipo MapReducers está formado por:</p><br>
+						<div class="autor">
+							<img src="./img/AresPerezAvila.jpg">
+							<p>Ares Pérez Ávila</p>
+							<a href="https://www.linkedin.com/in/ares-p%25C3%25A9rez-%25C3%25A1vila-a5203681/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+							<a href="http://www.aresarx.com"><i class="fa fa-globe" aria-hidden="true"></i></a>
+							<a href="https://twitter.com/aresarx"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="https://github.com/aresarx/"><i class="fa fa-github" aria-hidden="true"></i></a>
+							<a href="http://steamcommunity.com/id/aresarx"><i class="fa fa-steam" aria-hidden="true"></i></a>
+						</div>
+						<div class="autor">
+							<img src="./img/LinoFernandez.jpg">
+							<p>Lino Fernandez Otero</p>
+							<a href="https://twitter.com/finarth"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+							<a href="http://steamcommunity.com/id/finarth"><i class="fa fa-steam" aria-hidden="true"></i></a>
+						</div>
+						<br>
+						<img class="logoAutor" src="./img/LogoUEM.png">
+						<p> <i class="fa fa-graduation-cap" aria-hidden="true"></i> Agradecemos a la Universidad Europea por sus enseñanzas.</p><br>
+						<br>
+						<img src="./img/jQuery.gif"  height="70px"><img src="./img/chartjs.png" width="200px"><img src="./img/leaflet.png" width="250px">
+						<p> <i class="fa fa-code" aria-hidden="true"></i> Agradecemos a las librerías que hacen posible el sistema.</p><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+  	<script src="js/leaflet.js"></script> <!--Leaflet-->
+  	<script src="js/cp.js"></script> <!--Formas geométricas de códigos postales-->
+  	<script src="js/chart.js"></script> <!--Chartjs-->
+  	<script src="js/scripts.js"></script> <!--Scripts de funcionamiento-->
+  	<script src="js/g1.js"></script> <!--Datos de gráfica 1-->
+  	<!--<script src="js/g2.js"></script>--> <!--Datos de gráfica 2-->
+  	<script src="js/g3.js"></script> <!--Datos de gráfica 3-->
+  	<script src="js/g4.js"></script> <!--Datos de gráfica 4-->
+  	<script src="js/tartas.js"></script> <!--Datos de gráfica 4-->
+</body>
+</html>
